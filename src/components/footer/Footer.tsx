@@ -1,8 +1,9 @@
 import React from 'react';
-import { AppBar, Box, Button, Container, Divider, Link, List, ListItem, ListItemButton, ListItemText, Stack, Typography } from "@mui/material";4 
+import { AppBar, Box, Button, Container, Divider, Link, List, ListItem, ListItemButton, ListItemText, Stack, Typography, alpha, useTheme } from "@mui/material";4 
 import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import StoreIcon from '@mui/icons-material/Store';
+import { bgGradient } from '@/theme/css';
 
 const navItems = [
     {
@@ -15,14 +16,22 @@ const navItems = [
     },
     {
         label: 'Book',
-        link: '/book'
+        link: 'https://smoke-mirrors-slc.square.site/'
     }
 ];
 
 export default function Footer() {
+    const theme = useTheme();
 
     return (
-        <Box sx={{ backgroundColor: 'primary.main' }}>
+        <Box 
+            sx={{ 
+                ...bgGradient({
+                    startColor: alpha(theme.palette.primary.main, 1),
+                    endColor: alpha(theme.palette.primary.main, 0.4),
+                })
+            }}
+         >
             <Container maxWidth={'lg'}>
                 <Stack direction={{ xs: 'column', sm: 'row' }} spacing={{ xs: 4, xm: 0 }} justifyContent={'space-between'} py={'75px'}>
                     <Stack spacing={2}>
@@ -51,14 +60,14 @@ export default function Footer() {
                         </Stack>
                         <Box sx={{ display: 'flex', justifyContent: {xs: 'start', sm: 'end'} }}>
                             {navItems.map((item, index) => (
-                            <>
+                            <Box key={index}>
                                 <Button key={item.label}>
                                     <Link href={item.link} style={{ color: 'white' }}>
                                         {item.label}
                                     </Link>
                                 </Button>
                                 { index !== navItems.length - 1 && <Divider orientation='vertical' sx={{ height: "initial" }} /> }
-                            </>
+                            </Box>
                             ))}
                             
                         </Box>

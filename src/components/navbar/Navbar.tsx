@@ -13,6 +13,8 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Link from 'next/link';
+import { Container, alpha, useTheme } from '@mui/material';
+import { bgGradient } from '@/theme/css';
 
 interface Props {
   /**
@@ -34,14 +36,15 @@ const navItems = [
     },
     {
         label: 'Book',
-        link: '/book'
+        link: 'https://smoke-mirrors-slc.square.site/'
     }
 ];
 
 export default function DrawerAppBar(props: Props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-
+  const theme = useTheme();
+  
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
@@ -69,42 +72,52 @@ export default function DrawerAppBar(props: Props) {
   const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: 'flex', maxHeight: '50px' }}>
-      <AppBar color={'primary'}>
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, display: { sm: 'none' } }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            variant="h6"
-            component="div"
-            sx={{ flexGrow: { xs: 0, sm: 1 }, display: 'block', justifyContent: { xs: 'center', sm: 'start' } }}
-          >
-            <Link href={"/"}>
-                Smoke/Mirrors
-            </Link>
-          </Typography>
-          <Box sx={{ display: { xs: 'none', sm: 'flex' } }}>
-            {navItems.map((item, index) => (
-              <>
-              <Button key={item.label} sx={{ color: '#fff' }}>
-                  <Link href={item.link}>
-                      {item.label}
-                  </Link>
-                </Button>
-                { index !== navItems.length - 1 && <Divider orientation='vertical' sx={{ height: "initial" }} /> }
-              </>
-            ))}
-            
-          </Box>
-        </Toolbar>
+    <Box sx={{ display: 'flex', maxHeight: '75px' }}>
+      <AppBar color={'primary'}
+        sx={{ 
+          ...bgGradient({
+              startColor: alpha(theme.palette.primary.main, 1),
+              endColor: alpha(theme.palette.primary.dark, 1),
+          })
+      }}
+      >
+        <Container maxWidth="lg">
+          <Toolbar>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              onClick={handleDrawerToggle}
+              sx={{ mr: 2, display: { sm: 'none' } }}
+            >
+              <MenuIcon />
+            </IconButton>
+            <Typography
+              variant="h6"
+              component="div"
+              sx={{ flexGrow: { xs: 0, sm: 1 }, display: 'block', justifyContent: { xs: 'center', sm: 'start' } }}
+            >
+              <Link href={"/"}>
+                  Smoke/Mirrors
+              </Link>
+            </Typography>
+            <Box sx={{ display: { xs: 'none', sm: 'flex' } }}>
+              {navItems.map((item, index) => (
+                <Box  key={item.label}>
+                  <Button  sx={{ color: '#fff' }}>
+                      <Link href={item.link}>
+                          {item.label}
+                      </Link>
+                  </Button>
+                  { index !== navItems.length - 1 && <Divider orientation='vertical' sx={{ height: "initial" }} /> }
+                </Box>
+              ))}
+              
+            </Box>
+          </Toolbar>
+        </Container>
       </AppBar>
+      
       <nav>
         <Drawer
           container={container}

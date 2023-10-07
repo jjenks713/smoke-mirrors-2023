@@ -56,8 +56,12 @@ export default function MarketingLandingHero() {
                 </Typography>
 
                 <Typography sx={{ color: 'text.secondary' }}>
-                Etiam sollicitudin, ipsum eu pulvinar rutrum, tellus ipsum laoreet sapien, quis
-                venenatis ante odio sit amet eros.
+                Nestled in the heart of Salt Lake City, our salon seamlessly
+                blends retro charm with contemporary luxury. Step into a time-honored
+                space where vintage aesthetics meet modern sophistication, creating
+                an inviting atmosphere that feels both nostalgic and trendy. Let our expert
+                stylists utilize the finest products and techniques
+                to pamper you, ensuring your visit is nothing short of extraordinary.
                 </Typography>
 
                 <Stack
@@ -67,7 +71,7 @@ export default function MarketingLandingHero() {
                 justifyContent={{ xs: 'center', md: 'unset' }}
                 sx={{ mt: 5 }}
                 >
-                <Button variant="contained" color="inherit" size="large" href='/book'>
+                <Button variant="contained" color="inherit" size="large" href='https://smoke-mirrors-slc.square.site/'>
                     Book Now
                 </Button>
 

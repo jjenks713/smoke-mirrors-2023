@@ -157,28 +157,28 @@ function LargeItem({ productContent }: LargeItemProps) {
             transition: `all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.5${productContent.id}s`
         }}
       >
-        <Box sx={{ p: 0.75 }}>
-          <Image alt="cover" src={productContent.coverUrl} width={300} height={300} />
+        <Box sx={{ p: 0.75, boxShadow: theme.customShadows.z16 }}>
+          <Image alt="cover" src={productContent.coverUrl} width={300} height={300} style={{ opacity: .9, borderRadius: '20px' }} />
         </Box>
 
         <Stack alignItems="flex-end" justifyContent="space-between" sx={{ p: 3, pt: 5, height: 1 }}>
           <div>
-            <Typography variant="overline" sx={{ color: 'primary.main' }}>
+            <Typography variant="overline" sx={{ color: 'primary' }}>
               {productContent.category}
             </Typography>
 
-            <Typography variant="h4" sx={{ mt: 1, mb: 2 }}>
+            <Typography variant="h4" sx={{ mt: 1, mb: 2, color: 'grey[800]' }}>
               {productContent.title}
             </Typography>
 
-            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+            <Typography variant="body2" sx={{ color: 'white' }}>
               {productContent.description}
             </Typography>
           </div>
 
           <Button
             size="small"
-            color="inherit"
+            color="primary"
             endIcon={<ChevronRightIcon />}
           >
             Learn more
@@ -214,6 +214,7 @@ function SmallItem({ productContent, square }: SmallItemProps) {
             cursor: 'pointer',
             borderRadius: 2,
             overflow: 'hidden',
+            padding: '1rem',
             ...bgGradient({
               imgUrl: productContent.coverUrl,
               startColor: alpha(theme.palette.common.black, 0.8),
@@ -232,7 +233,6 @@ function SmallItem({ productContent, square }: SmallItemProps) {
             alignItems="center"
             justifyContent="center"
             sx={{
-              width: 1,
               height: 'fit-content',
               zIndex: 9,
               position: 'absolute',
@@ -240,10 +240,10 @@ function SmallItem({ productContent, square }: SmallItemProps) {
               textAlign: 'center',
             }}
           >
-            <Typography variant="overline" sx={{ opacity: 0.48 }}>
+            <Typography variant="overline" sx={{ opacity: 0.48, color: 'primary.darker' }}>
               {productContent.category}
             </Typography>
-            <Typography variant="h6">{productContent.title}</Typography>
+            <Typography variant="h6" color='primary.darker'>{productContent.title}</Typography>
           </Stack>
 
           <m.div 
@@ -257,6 +257,10 @@ function SmallItem({ productContent, square }: SmallItemProps) {
               src={productContent.coverUrl}
               width={200}
               height={200}
+              style={{
+                opacity: .1,
+                borderRadius: '20px'
+              }}
             />
           </m.div>
         </Paper>
