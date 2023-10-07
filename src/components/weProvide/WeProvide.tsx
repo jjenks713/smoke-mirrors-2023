@@ -5,7 +5,6 @@ import Stack from '@mui/material/Stack';
 import Container from '@mui/material/Container';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
-import SvgColor from '../svg-color';
 import Image from 'next/image';
 import { bgGradient } from '@/theme/css';
 import { alpha, useTheme } from '@mui/material';

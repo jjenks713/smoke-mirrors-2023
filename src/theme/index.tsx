@@ -1,15 +1,12 @@
 'use client';
 
 import { useMemo } from 'react';
-import { createTheme, ThemeOptions, ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
+import { createTheme, ThemeOptions } from '@mui/material/styles';
 import { palette } from './palette';
 import { shadows } from './shadows';
 import { typography } from './typography';
-import { presets } from './options/presets';
-import { darkMode } from './options/dark-mode';
 import { customShadows } from './custom-shadows';
 import { componentsOverrides } from './overrides';
-import RTL, { direction } from './options/right-to-left';
 
 // ----------------------------------------------------------------------
 
