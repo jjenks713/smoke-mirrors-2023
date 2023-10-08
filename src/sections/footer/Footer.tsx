@@ -4,6 +4,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import StoreIcon from '@mui/icons-material/Store';
 import { bgGradient } from '@/theme/css';
+import NavItems from '@/components/navItems';
 
 const navItems = [
     {
@@ -58,19 +59,7 @@ export default function Footer() {
                                 <StoreIcon />
                             </a>
                         </Stack>
-                        <Box sx={{ display: 'flex', justifyContent: {xs: 'start', sm: 'end'} }}>
-                            {navItems.map((item, index) => (
-                            <Box key={index}>
-                                <Button key={item.label}>
-                                    <Link href={item.link} style={{ color: 'white' }}>
-                                        {item.label}
-                                    </Link>
-                                </Button>
-                                { index !== navItems.length - 1 && <Divider orientation='vertical' sx={{ height: "initial" }} /> }
-                            </Box>
-                            ))}
-                            
-                        </Box>
+                        <NavItems isMobile={false} />
                     </Stack>
                 </Stack>
             </Container>

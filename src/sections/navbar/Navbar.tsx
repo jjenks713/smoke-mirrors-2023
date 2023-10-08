@@ -15,6 +15,8 @@ import Button from '@mui/material/Button';
 import Link from 'next/link';
 import { Container, alpha, useTheme } from '@mui/material';
 import { bgGradient } from '@/theme/css';
+import { motion } from 'framer-motion';
+import NavItems from '@/components/navItems';
 
 interface Props {
   /**
@@ -25,20 +27,6 @@ interface Props {
 }
 
 const drawerWidth = 240;
-const navItems = [
-    {
-        label: 'About',
-        link: '/about',
-    },
-    {
-        label: 'Product',
-        link: '/product'
-    },
-    {
-        label: 'Book',
-        link: 'https://smoke-mirrors-slc.square.site/'
-    }
-];
 
 export default function DrawerAppBar(props: Props) {
   const { window } = props;
@@ -55,17 +43,7 @@ export default function DrawerAppBar(props: Props) {
         Smoke/Mirrors
       </Typography>
       <Divider />
-      <List>
-        {navItems.map((item, index) => (
-          <ListItem key={item.label} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
-                <Link href={item.link}>
-                    <ListItemText primary={item.label} />
-                </Link>
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+      <NavItems isMobile={true} />
     </Box>
   );
 
@@ -92,28 +70,15 @@ export default function DrawerAppBar(props: Props) {
             >
               <MenuIcon />
             </IconButton>
-            <Typography
-              variant="h6"
-              component="div"
+            <Box
+              component={motion.div}
               sx={{ flexGrow: { xs: 0, sm: 1 }, display: 'block', justifyContent: { xs: 'center', sm: 'start' } }}
             >
               <Link href={"/"}>
                   Smoke/Mirrors
               </Link>
-            </Typography>
-            <Box sx={{ display: { xs: 'none', sm: 'flex' } }}>
-              {navItems.map((item, index) => (
-                <Box  key={item.label}>
-                  <Button  sx={{ color: '#fff' }}>
-                      <Link href={item.link}>
-                          {item.label}
-                      </Link>
-                  </Button>
-                  { index !== navItems.length - 1 && <Divider orientation='vertical' sx={{ height: "initial" }} /> }
-                </Box>
-              ))}
-              
             </Box>
+            <NavItems isMobile={false} />
           </Toolbar>
         </Container>
       </AppBar>

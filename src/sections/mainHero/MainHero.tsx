@@ -11,6 +11,8 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import Image from 'next/image';
 import { bgGradient } from '@/theme/css';
 import { useResponsive } from '@/hooks/use-responsive';
+import HeroBackground from '@/components/heroBackground';
+import AnimateButton from '@/components/animateButton';
 // ----------------------------------------------------------------------
 
 export default function MarketingLandingHero() {
@@ -19,17 +21,7 @@ export default function MarketingLandingHero() {
   const mdUp = useResponsive('up', 'md');
 
   return (
-    <Box
-      sx={{
-        ...bgGradient({
-            imgUrl: '/images/tools-2.png',
-            startColor: alpha(theme.palette.common.black, 1),
-            endColor: alpha(theme.palette.common.white, 0.6),
-            direction: 'to top'
-        }),
-        overflow: 'hidden',
-      }}
-    >
+    <HeroBackground>
         <Box width={"100%"}
             
         >
@@ -71,9 +63,9 @@ export default function MarketingLandingHero() {
                 justifyContent={{ xs: 'center', md: 'unset' }}
                 sx={{ mt: 5 }}
                 >
-                <Button variant="contained" color="inherit" size="large" href='https://smoke-mirrors-slc.square.site/'>
+                <AnimateButton variant="contained" color="inherit" size="large" href='https://smoke-mirrors-slc.square.site/'>
                     Book Now
-                </Button>
+                </AnimateButton>
 
                 <Stack direction="row" alignItems="center" sx={{ typography: 'h6' }}>
                     <a href='#services'>
@@ -98,6 +90,6 @@ export default function MarketingLandingHero() {
         </Container>
         </Box>
       
-    </Box>
+    </HeroBackground>
   );
 }

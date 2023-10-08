@@ -1,12 +1,12 @@
 import { Box } from '@mui/material'
-import WeProvide from '@/components/weProvide'
-import Hero from '@/components/hero'
-import CaseStudies from '@/components/caseStudies'
+import WeProvide from '@/sections/weProvide'
+import MarketingLandingHero from '@/sections/mainHero'
+import CaseStudies from '@/sections/caseStudies'
 
 export default function Home() {
   return (
       <Box>
-        <Hero />
+        <MarketingLandingHero />
         <WeProvide />
         <CaseStudies />
       </Box>
